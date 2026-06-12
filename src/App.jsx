@@ -6,7 +6,7 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   const addTodo = (todo) => {
-    setTodos((prev) => [todo,...prev])
+    setTodos((prev) => [{id: Date.now(),...todo},...prev])
   }
 
   const updateTodo = (id, todo) => {
@@ -18,7 +18,7 @@ function App() {
   }
 
   const toggleComplete = (id) => {
-    setTodos((prevtodo) => prevtodo.map((prev) => prev.id === id ? {...prev, completed: true} : prev ))
+    setTodos((prevtodo) => prevtodo.map((prev) => prev.id === id ? {...prev, completed: !prev.completed} : prev ))
   }
 
   return (
